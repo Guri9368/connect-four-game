@@ -3,7 +3,7 @@
 // Backend API URL
 const BACKEND_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:3000' 
-  : 'https://your-backend-url.onrender.com';  // We'll update this later
+  : 'https://connect-four-game-mrsq.onrender.com';  
 
 
 
