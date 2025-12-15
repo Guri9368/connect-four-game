@@ -18,6 +18,7 @@ const allowedOrigins = [
   'http://localhost:5500',
   'http://127.0.0.1:5500',
   'https://connect-four-game-axokdmjp7-gurmeet-singh-rathors-projects.vercel.app',
+   'https://connect-four-game-sepia.vercel.app',
   'https://connect-four-game-gurmeet-singh-rathors-projects.vercel.app'
 ];
 
