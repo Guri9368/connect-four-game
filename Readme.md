@@ -42,43 +42,11 @@ A production-ready, full-stack real-time Connect Four game with competitive AI b
 ## 🏗️ Architecture
 
 ### Production
-
-User Browser (anywhere)
-│ HTTPS / WSS
-▼
-┌──────────────────────────────┐
-│ Frontend – Vercel │
-│ (Static HTML/CSS/JS) │
-└──────────────┬───────────────┘
-│ WebSocket + HTTP
-▼
-┌──────────────────────────────┐
-│ Backend – Render │
-│ Node.js + Express + Socket.IO│
-│ - Game logic & matchmaking │
-│ - Bot AI │
-│ - Leaderboard API │
-└──────────────┬───────────────┘
-│ SQL
-▼
-┌──────────────────────────────┐
-│ PostgreSQL – Render │
-│ - users / games / moves │
-└──────────────────────────────┘
-
-text
+<img width="906" height="644" alt="image" src="https://github.com/user-attachments/assets/4995b53d-cc81-4db4-b175-74dee028d98b" />
 
 ### Local development
 
-Frontend (localhost:5500)
-▼
-Backend (localhost:3000)
-▼
-┌───────────────┬─────────────────┐
-▼ ▼ ▼
-PostgreSQL Kafka (Docker) Bot AI
-
-text
+<img width="789" height="235" alt="image" src="https://github.com/user-attachments/assets/3e9ef61d-558f-4734-b785-f588f5476256" />
 
 ---
 
@@ -194,6 +162,9 @@ In production, Kafka is disabled (no Docker / managed Kafka on free tier). Event
 ---
 
 ## 📁 Project Structure
+
+<img width="893" height="605" alt="image" src="https://github.com/user-attachments/assets/561d7563-e3cc-4ea2-8e59-e78846b4deee" />
+
 
 connect-four-game/
 │
