@@ -10,23 +10,36 @@ require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
+
+// CORS origins - include both development and production
+const allowedOrigins = [
+  'http://localhost:8080',
+  'http://127.0.0.1:8080',
+  'http://localhost:5500',
+  'http://127.0.0.1:5500',
+  'https://connect-four-game-axokdmjp7-gurmeet-singh-rathors-projects.vercel.app',
+  'https://connect-four-game-gurmeet-singh-rathors-projects.vercel.app'
+];
+
+// Socket.IO configuration with production CORS
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:8080', 'http://127.0.0.1:8080'],
+    origin: allowedOrigins,
     methods: ['GET', 'POST'],
     credentials: true
   },
+  transports: ['websocket', 'polling'],
+  allowEIO3: true,
   pingTimeout: 60000,
   pingInterval: 25000
 });
 
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://127.0.0.1:8080'],
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS']
 }));
-// app.use(express.static('public'));  // Commented out - using separate frontend
 
 const gameManager = new GameManager(io);
 
@@ -88,11 +101,12 @@ async function startServer() {
     await connectProducer();
 
     const PORT = process.env.PORT || 3000;
-    server.listen(PORT, () => {
+    server.listen(PORT, '0.0.0.0', () => {
       console.log(`
 ╔════════════════════════════════════════╗
 ║   Connect Four Backend Server         ║
 ║   Running on port ${PORT}              ║
+║   Environment: ${process.env.NODE_ENV || 'development'}
 ╚════════════════════════════════════════╝
       `);
     });
