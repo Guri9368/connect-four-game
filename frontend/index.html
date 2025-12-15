@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect Four - Real-Time Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div id="username-screen" class="screen active">
+      <div class="container">
+        <h1>Connect Four</h1>
+        <p>Real-time multiplayer game</p>
+        <input type="text" id="username-input" placeholder="Enter your username" maxlength="20">
+        <button id="join-btn" onclick="joinGame()">Join Game</button>
+      </div>
+    </div>
+
+    <div id="waiting-screen" class="screen">
+      <div class="container">
+        <h2>Finding opponent...</h2>
+        <p>You will play against a bot if no one joins in 10 seconds</p>
+        <div class="spinner"></div>
+        <button onclick="cancelQueue()">Cancel</button>
+      </div>
+    </div>
+
+    <div id="game-screen" class="screen">
+      <div class="game-container">
+        <div class="game-header">
+          <div class="player-info">
+            <span id="player1-name" class="player-badge">Player 1</span>
+            <span class="vs">VS</span>
+            <span id="player2-name" class="player-badge">Player 2</span>
+          </div>
+          <div id="turn-indicator" class="turn-indicator">Your turn!</div>
+          <div id="status-message" class="status-message"></div>
+        </div>
+
+        <div id="board" class="board"></div>
+
+        <div class="game-footer">
+          <span id="move-count">Moves: 0</span>
+          <button onclick="showLeaderboard()">View Leaderboard</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="gameover-screen" class="screen">
+      <div class="container">
+        <h2 id="result-title">Game Over!</h2>
+        <p id="result-message"></p>
+        <div id="game-stats"></div>
+        <button onclick="playAgain()">Play Again</button>
+        <button onclick="showLeaderboard()">View Leaderboard</button>
+      </div>
+    </div>
+
+    <div id="leaderboard-screen" class="screen">
+      <div class="container">
+        <h2>Leaderboard</h2>
+        <table id="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>Wins</th>
+              <th>Games</th>
+              <th>Win %</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body"></tbody>
+        </table>
+        <button onclick="closeLeaderboard()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Use CDN for Socket.IO instead of backend route -->
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
